@@ -142,7 +142,7 @@ Note the newline between the two. Also, `input_2.txt` is ignored, because it doe
 ## Build
 If you're cool and already have a good working Go build environment on your system, just run `make build`.
 
-I'm not cool though, and I'm pretty lazy, so I use Docker for this kind of thing, which is why it's the default make target. Just run `make` on a system with Docker running on it, and a build image will be created, `make build` executed within the container where all the prerequisites exist, and the build image will be removed after it's done.
+I'm not cool though, and I'm pretty lazy, so I use Docker for this kind of thing, which is why it's the default make target. Just run `make` on a system with Docker running on it, and a build image will be created, and `make build` will be executed within the container where all the prerequisites exist.
 
 If you're iterating, you can `make docker-prep` to create the image, `make docker-build` repeatedly to run the build, and `make docker-clean` to remove the image.
 

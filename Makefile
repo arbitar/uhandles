@@ -1,7 +1,6 @@
 all:
 	docker build -t uhandles .
 	docker run --rm -v "${PWD}":/host uhandles
-	docker rmi uhandles
 
 docker-prep:
 	docker build -t uhandles .
@@ -17,3 +16,4 @@ build:
 
 clean:
 	rm uhandles
+	docker rmi uhandles || true
