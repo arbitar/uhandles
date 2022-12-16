@@ -21,19 +21,13 @@ func usage(dest *os.File) {
   -d|--data 		JSON data file containing substitution values (file path or "-" for stdin)
   -t|--template 	Handlebar template file to render, or directory of template files (default: "-", stdin)
   -o|--output 		File to concat rendered templates to, or directory to place rendered templates within (default: "-", stdout)
-	--tmpl-token 		Token to use to detect template files in input-directory mode (default: ".tmpl")
+  --tmpl-token 		Token to use to detect template files in input-directory mode (default: ".tmpl")
 
   (NOTE: You cannot specify "-"/stdin as a source for both template and data.)
 `)
 }
 
 func main() {
-	// quick short-circuit to usage info:
-	if len(os.Args) > 2 && (os.Args[1] == "-h" || os.Args[1] == "--help") {
-		usage(os.Stdout)
-		os.Exit(0)
-	}
-
 	// handle flags:
 	var jsonPath string
 	var inputPath string
@@ -44,13 +38,17 @@ func main() {
 	flag.StringVar(&jsonPath, "data", "", "")
 
 	flag.StringVar(&inputPath, "t", "", "")
-	flag.StringVar(&inputPath, "template", "", "Handl")
+	flag.StringVar(&inputPath, "template", "", "")
 
 	flag.StringVar(&outputPath, "o", "", "")
 	flag.StringVar(&outputPath, "output", "", "")
 
 	flag.StringVar(&tmplToken, "tmpl-token", "", "")
 
+	flag.Usage = func() {
+		usage(os.Stdout)
+		os.Exit(0)
+	}
 	flag.Parse()
 
 	// pluck defaults out of env variables if they're set but not specified from flags:
