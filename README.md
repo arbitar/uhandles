@@ -62,6 +62,10 @@ Here's what's in an array of objects:
 - The upper-case version of "b" is "B"
 ```
 
+For more information on the template format, please see the official [Handlebars documentation](https://handlebarsjs.com/guide/).
+
+For more information on the flavor of handlebars being used here, please see the project for which this is essentially just a wrapper for, [aymerick/raymond](https://github.com/aymerick/raymond).
+
 ## Advanced Usage
 If you don't want to the template coming from stdin, or the output to stdout, or if you want the template from a file and the JSON from stdin, or any other number of weird things... there is a more complicated flag-based usage:
 
